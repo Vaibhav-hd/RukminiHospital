@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Confirmed - Rukmini Hospital</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0b7a5c 0%, #0f4c81 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 60px 40px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .success-icon {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 30px;
+            background: linear-gradient(135deg, #0b7a5c, #0f4c81);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 0.6s ease-out;
+            box-shadow: 0 10px 40px rgba(11, 122, 92, 0.3);
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .success-icon i {
+            font-size: 60px;
+            color: white;
+        }
+
+        h1 {
+            color: #0b7a5c;
+            font-size: 36px;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #0f4c81;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .message {
+            color: #555;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .info-box {
+            background: #f0f8f5;
+            border-left: 4px solid #0b7a5c;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .info-box p {
+            color: #555;
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+
+        .info-box strong {
+            color: #0b7a5c;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #0b7a5c, #0f4c81);
+            color: white;
+            box-shadow: 0 10px 30px rgba(11, 122, 92, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(11, 122, 92, 0.5);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #0b7a5c;
+            border: 2px solid #0b7a5c;
+        }
+
+        .btn-secondary:hover {
+            background: #0b7a5c;
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, rgba(11, 122, 92, 0.05), rgba(15, 76, 129, 0.05));
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+
+        .contact-section h3 {
+            color: #0b7a5c;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 15px;
+            background: white;
+            color: #0b7a5c;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 14px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(11, 122, 92, 0.3);
+        }
+
+        .contact-link i {
+            font-size: 16px;
+        }
+
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #0b7a5c, transparent);
+        }
+
+        .timeline-item {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+
+        .timeline-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #0b7a5c, #0f4c81);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            font-weight: bold;
+            font-size: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .timeline-label {
+            font-size: 12px;
+            color: #888;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 40px 25px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .success-icon {
+                width: 100px;
+                height: 100px;
+            }
+
+            .success-icon i {
+                font-size: 50px;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .timeline {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .timeline::before {
+                top: 0;
+                left: 20px;
+                right: auto;
+                width: 2px;
+                height: 100%;
+            }
+
+            .timeline-item {
+                text-align: left;
+                padding-left: 60px;
+            }
+
+            .timeline-number {
+                position: absolute;
+                left: 0;
+            }
+        }
+
+        .highlight {
+            color: #0b7a5c;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="success-icon">
+            <i class="fas fa-check"></i>
+        </div>
+
+        <h1>Appointment Confirmed!</h1>
+        <p class="subtitle">Thank you for choosing Rukmini Hospital</p>
+
+        <p class="message">
+            Your appointment has been successfully submitted. We appreciate your trust in us and look forward to providing you with exceptional healthcare.
+        </p>
+
+        <div class="info-box">
+            <p><strong><i class="fas fa-calendar"></i> Next Step:</strong></p>
+            <p>Our team will contact you shortly at the phone number provided to confirm your appointment date and time.</p>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-number">1</div>
+                <div class="timeline-label">Submission<br>Complete</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-number">2</div>
+                <div class="timeline-label">We'll Call<br>You Soon</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-number">3</div>
+                <div class="timeline-label">Visit<br>Hospital</div>
+            </div>
+        </div>
+
+        <div class="contact-section">
+            <h3>Need Immediate Assistance?</h3>
+            <div class="contact-links">
+                <a href="https://wa.me/918669369486?text=Hi%20I%20just%20booked%20an%20appointment" class="contact-link" target="_blank">
+                    <i class="fab fa-whatsapp"></i> WhatsApp Us
+                </a>
+                <a href="tel:+918669369486" class="contact-link">
+                    <i class="fas fa-phone"></i> Call Now
+                </a>
+                <a href="mailto:vaikunthviewdoc@gmail.com" class="contact-link">
+                    <i class="fas fa-envelope"></i> Email
+                </a>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <a href="index.html" class="btn btn-primary">
+                <i class="fas fa-home"></i> Return to Home
+            </a>
+            <a href="https://instagram.com/dr.infin_ite24" target="_blank" class="btn btn-secondary">
+                <i class="fab fa-instagram"></i> Follow Us
+            </a>
+        </div>
+
+        <p style="color: #888; font-size: 12px; margin-top: 30px;">
+            © 2026 Rukmini Hospital | Ayurveda • Care • Cure
+        </p>
+    </div>
+</body>
+</html>
